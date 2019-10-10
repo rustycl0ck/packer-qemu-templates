@@ -7,6 +7,7 @@ nmon
 slurm
 tcpdump
 unzip
+vim
 "
 
 ESSENTIAL_PACKAGES="
