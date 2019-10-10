@@ -14,13 +14,13 @@ before:
   - wget -q https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_1.4.4_linux_amd64.zip -O packer.zip
   - unzip packer.zip -d /bin
   - rm -f packer.zip
+  - sudo apt install -y qemu qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
   - sudo reboot
   #- apt install -y qemu qemu-kvm
 
 script:
   - sudo modprobe kvm-intel
   - sudo modprobe kvm-amd
-  - sudo reboot
   - PATH=$PATH:$PWD
   - cd ubuntu
   - PACKER_LOG=1 packer build -var-file=ubuntu1804.json ubuntu.json
