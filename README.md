@@ -1,3 +1,5 @@
+[![Build Status](https://cloud.drone.io/api/badges/rustycl0ck/packer-qemu-templates/status.svg)](https://cloud.drone.io/rustycl0ck/packer-qemu-templates)
+
 ## Introduction
 
 The packer-qemu-templates provides Packer templates for unattended

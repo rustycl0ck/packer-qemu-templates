@@ -1,0 +1,47 @@
+---
+kind: pipeline
+name: default
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: ubuntu_PR
+  pull: always
+  image: rustycl0ck/drone-packer
+  settings:
+    actions: build
+    color: true
+    context: ubuntu
+    debug: true
+    template: ubuntu.json
+    var_files:
+    - ubuntu1804.json
+  when:
+    event:
+    - pull_request
+    ref:
+    - refs/heads/master
+    - "refs/tags/*"
+
+- name: ubuntu
+  pull: always
+  image: rustycl0ck/drone-packer
+  settings:
+    actions: build
+    color: true
+    context: ubuntu
+    debug: true
+    template: ubuntu.json
+    var_files:
+    - ubuntu1804.json
+  when:
+    event:
+    - tag
+    - push
+    ref:
+    - refs/heads/master
+    - "refs/tags/*"
+
+...
